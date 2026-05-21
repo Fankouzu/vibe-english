@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>单词闯关练习</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <section id="loginScreen" class="login-screen">
+      <div class="login-card">
+        <div class="brand">
+          <div class="brand-mark">W</div>
+          <div>
+            <h1>单词闯关</h1>
+            <p><span id="loginTotalWords">0</span> 个词条 · SQLite 学习记录</p>
+          </div>
+        </div>
+        <div class="login-section-title">已注册学生</div>
+        <div id="studentList" class="student-list"></div>
+        <div class="login-section-title">新学生 / 其他学生</div>
+        <form id="loginForm" class="login-form">
+          <input id="studentName" autocomplete="name" placeholder="输入学生名字或 ID" />
+          <button type="submit">进入学习</button>
+        </form>
+        <div id="studentBadge" class="student-badge">请选择学生或输入新名字。</div>
+      </div>
+    </section>
+
+    <main id="appShell" class="app-shell hidden">
+      <aside class="side-panel">
+        <div class="brand">
+          <div class="brand-mark">W</div>
+          <div>
+            <h1>单词闯关</h1>
+            <p><span id="totalWords">0</span> 个词条</p>
+          </div>
+        </div>
+
+        <section class="student-mini">
+          <span id="activeStudentName">未登录</span>
+          <button id="switchStudentButton" type="button" class="ghost">切换学生</button>
+        </section>
+
+        <section class="control-block">
+          <label for="modeSelect">练习方式</label>
+          <select id="modeSelect">
+            <option value="mixed">混合训练</option>
+            <option value="cn-to-en">中文填英文</option>
+            <option value="en-to-cn-choice">英文选中文</option>
+            <option value="letter-fill">首尾字母补全</option>
+            <option value="cn-to-en-choice">中文选英文</option>
+            <option value="cn-meaning-fill">英文填中文</option>
+            <option value="phrase-tail-choice">短语补全选择</option>
+            <option value="phrase-tail-fill">短语补全填空</option>
+          </select>
+        </section>
+
+        <section class="control-block">
+          <label for="sessionCount">每轮题数</label>
+          <input id="sessionCount" type="range" min="10" max="60" value="20" step="5" />
+        </section>
+
+        <section class="control-block">
+          <div class="block-title">字母范围</div>
+          <div id="letterFilters" class="chip-grid compact"></div>
+        </section>
+
+        <section class="control-block">
+          <div class="block-title">分类</div>
+          <div id="categoryNote" class="filter-note">短语练习不使用词性分类。</div>
+          <div id="categoryFilters" class="chip-grid"></div>
+        </section>
+
+        <div class="side-actions">
+          <button id="startButton" type="button">开始练习</button>
+          <button id="shuffleButton" type="button" class="ghost">随机三组</button>
+        </div>
+      </aside>
+
+      <section class="study-area">
+        <header class="top-bar">
+          <div>
+            <div class="eyebrow">Practice Session</div>
+            <h2>看题、作答、即时反馈</h2>
+          </div>
+          <div class="progress-wrap">
+            <span id="progressText">0 / 0</span>
+            <div class="progress"><div id="progressFill"></div></div>
+          </div>
+          <section class="score-panel">
+            <div><span id="scoreStat">0</span><small>综合分数</small></div>
+            <div><span id="statusStat">尚未开始</span><small>状态</small></div>
+            <div><span id="overallStat">0%</span><small>整体进度</small></div>
+            <div><span id="detailStat">0 / 0</span><small>已掌握</small></div>
+          </section>
+        </header>
+
+        <section class="stats-grid">
+          <div><span id="sessionStat">0</span><small>本轮词数</small></div>
+          <div><span id="correctStat">0</span><small>答对</small></div>
+          <div><span id="accuracyStat">0%</span><small>正确率</small></div>
+          <div><span id="masteryStat">0%</span><small>总掌握</small></div>
+        </section>
+
+        <section class="question-card" aria-live="polite"></section>
+
+        <div class="nav-row">
+          <button id="nextButton" type="button" disabled>下一题</button>
+          <button id="mistakeButton" type="button" class="ghost">复习错题</button>
+        </div>
+
+        <section class="mistake-panel">
+          <div class="panel-title">错题本</div>
+          <ul id="mistakeList"></ul>
+        </section>
+      </section>
+    </main>
+    <script type="module" src="./main.mjs"></script>
+  </body>
+</html>
