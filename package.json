@@ -1,0 +1,14 @@
+{
+  "name": "vibe-english",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npx vercel dev",
+    "test": "node --test app/learning.test.mjs app/quiz-core.test.mjs api/study-core.test.mjs",
+    "check": "node --check app/main.mjs && node --check api/index.js && node --check api/study-core.mjs"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.15.15"
+  }
+}

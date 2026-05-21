@@ -1,0 +1,11 @@
+.DS_Store
+*.pyc
+__pycache__/
+node_modules/
+.vercel/
+app/study.sqlite3
+app/study.sqlite3-*
+build/*.log
+build/*.err
+build/preview-*.png
+codex-write-check.tmp
